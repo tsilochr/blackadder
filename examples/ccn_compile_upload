@@ -1,0 +1,5 @@
+g++ ccn_algid_subscriber.cpp bitvector.cpp blackadder.cpp -o ccn_algid_subscriber -lpthread
+g++ ccn_algid_publisher.cpp bitvector.cpp blackadder.cpp -o ccn_algid_publisher -lpthread
+
+echo Uploading files
+scp -r  ccn_algid_subscriber ccn_algid_publisher  george.parisis@nitlab.inf.uth.gr:/home/george.parisis/nitos_nfs/home/

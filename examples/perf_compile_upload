@@ -1,0 +1,5 @@
+g++ perf_subscriber.cpp bitvector.cpp blackadder.cpp -o perf_subscriber -lpthread
+g++ perf_publisher.cpp bitvector.cpp blackadder.cpp -o perf_publisher -lpthread
+
+echo Uploading files
+scp -r  perf_subscriber  perf_publisher  george.parisis@nitlab.inf.uth.gr:/home/george.parisis/nitos_nfs/home/
