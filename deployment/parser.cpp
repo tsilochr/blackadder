@@ -83,6 +83,7 @@ int Parser::getGlobalDomainParameters() {
         cerr << "mandatory option OVERLAY_MODE is missing" << endl;
         return -1;
     }
+    return 0;
 }
 
 int Parser::addConnection(const Setting &connection, NetworkNode *nn) {
