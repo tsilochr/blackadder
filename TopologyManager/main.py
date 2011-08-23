@@ -14,7 +14,6 @@ import BlackAdderTMCore
 import TMPacket
 import BlackAdderConnection
 from array import *
-import TMConfigParser
 import sys
 import os
 import math
