@@ -83,7 +83,7 @@ public:
     Event(unsigned char _type, string _id, char *_data, int _data_len, char *_buffer);
     ~Event();
     unsigned char type;
-    string id; /*in Hex*/
+    string id;
     char *data;
     int data_len;
     char *buffer; /*do not use that...only the destructor uses it to delete the whole buffer once*/
