@@ -16,11 +16,9 @@
 #define CLICK_LOCALRV_HH
 
 #include "globalconf.hh"
-#include "ba_bitvector.hh"
 #include "informationitem.hh"
 #include "scope.hh"
 #include "remotehost.hh"
-#include "common.hh"
 
 CLICK_DECLS
 

@@ -15,22 +15,6 @@
 #ifndef CLICK_HELPER_HH
 #define CLICK_HELPER_HH
 
-#include <click/config.h>
-#include <click/confparse.hh>
-#include <click/error.hh>
-#include <click/element.hh>
-
-#include <click/string.hh>
-#include <click/hashtable.hh>
-#include <click/vector.hh>
-#include <click/bitvector.hh>
-#include <click/straccum.hh>
-
-#include <clicknet/ip.h>
-#include <clicknet/udp.h>
-#include <click/etheraddress.hh>
-#include <click/ipaddress.hh>
-
 #define PURSUIT_ID_LEN 8 //in bytes
 #define FID_LEN 8 //in bytes
 #define MAC_LEN 6

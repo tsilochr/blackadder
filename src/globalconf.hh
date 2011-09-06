@@ -15,10 +15,16 @@
 #ifndef CLICK_GLOBALCONF_HH
 #define CLICK_GLOBALCONF_HH
 
+#include <click/config.h>
+#include <click/element.hh>
+#include <click/confparse.hh>
+#include <click/error.hh>
 
 #include "helper.hh"
-#include "ba_bitvector.hh"
 #include "common.hh"
+
+
+
 CLICK_DECLS
 
 class GlobalConf : public Element {

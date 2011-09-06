@@ -15,12 +15,11 @@
 #ifndef CLICK_LOCALPROXY_HH
 #define CLICK_LOCALPROXY_HH
 
-#include "common.hh"
-
-CLICK_DECLS
-
+#include "globalconf.hh"
 #include "localhost.hh"
 #include "activepub.hh"
+
+CLICK_DECLS
 
 class LocalHost;
 

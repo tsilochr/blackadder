@@ -16,6 +16,7 @@
 #define CLICK_FROMNETLINK_HH
 
 #include "netlink.hh"
+#include "helper.hh"
 
 CLICK_DECLS
 

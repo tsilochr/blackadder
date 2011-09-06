@@ -15,19 +15,10 @@
 #ifndef CLICK_COMMON_HH
 #define CLICK_COMMON_HH
 
-#include "helper.hh"
 #include "ba_bitvector.hh"
-#include "globalconf.hh"
 
-#if CLICK_LINUXMODULE
-#include <click/cxxprotect.h>
-CLICK_CXX_PROTECT
-#include <linux/netlink.h>
-#include <net/sock.h>
-#include <linux/net.h>
-CLICK_CXX_UNPROTECT
-#include <click/cxxunprotect.h>
-#endif
+#include <click/string.hh>
+#include <click/hashtable.hh>
 
 CLICK_DECLS
 
@@ -121,27 +112,6 @@ struct ScopeSetItem {
     ScopeSetItem(Scope * scp) : _scpointer(scp) {
     }
 };
-#if CLICK_LINUXMODULE
-struct PIDSetItem {
-    /* data */
-    struct pid * _pidpointer;
-    pid_t _pid_no;
-
-    /*mandated for template*/
-    typedef struct pid * key_type;
-    typedef struct pid * key_const_reference;
-
-    key_const_reference hashkey() const {
-        return _pidpointer;
-    }
-
-    /*constructor*/
-    PIDSetItem(struct pid * _pidp) : _pidpointer(_pidp){
-    }
-};
-#endif
-
-
 typedef HashTable<LocalHostSetItem> LocalHostSet;
 typedef LocalHostSet::iterator LocalHostSetIter;
 
@@ -153,11 +123,6 @@ typedef InformationItemSet::iterator InformationItemSetIter;
 
 typedef HashTable<ScopeSetItem> ScopeSet;
 typedef ScopeSet::iterator ScopeSetIter;
-
-#if CLICK_LINUXMODULE
-typedef HashTable<PIDSetItem> PIDSet;
-typedef PIDSet::iterator PIDSetIter;
-#endif
 
 typedef HashTable<StringSetItem> StringSet;
 typedef StringSet::iterator StringSetIter;

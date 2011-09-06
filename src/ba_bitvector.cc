@@ -11,8 +11,6 @@
 *
 * See LICENSE and COPYING for more details.
 */
-
-#include <click/config.h>
 #include "ba_bitvector.hh"
 
 CLICK_DECLS

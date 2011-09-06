@@ -15,8 +15,8 @@
 #ifndef CLICK_SCOPE_HH
 #define CLICK_SCOPE_HH
 
-#include "common.hh"
-
+#include "informationitem.hh"
+#include "helper.hh"
 
 CLICK_DECLS
 

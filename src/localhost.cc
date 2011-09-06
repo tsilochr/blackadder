@@ -13,7 +13,6 @@
 */
 
 #include "localhost.hh"
-#include "helper.hh"
 
 CLICK_DECLS
 

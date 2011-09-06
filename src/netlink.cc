@@ -22,11 +22,6 @@ Netlink::Netlink() {
 Netlink::~Netlink() {
 }
 
-//int Netlink::configure(Vector<String> &conf, ErrorHandler *errh) {
-//    //click_chatter("Netlink: configured!");
-//    return 0;
-//}
-
 int Netlink::initialize(ErrorHandler *errh) {
 #if CLICK_LINUXMODULE
 

@@ -15,6 +15,7 @@
 #ifndef CLICK_LOCALHOST_HH
 #define CLICK_LOCALHOST_HH
 
+#include "helper.hh"
 #include "common.hh"
 
 CLICK_DECLS

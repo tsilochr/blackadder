@@ -75,20 +75,19 @@ string chararray_to_hex(const string &str) {
 
 void *event_listener_loop(void *arg) {
     Blackadder *ba = (Blackadder *) arg;
-    int test = 0;
     Event ev = ba->getEvent();
     if (ev.type == START_PUBLISH) {
         for (int i = 0; i < 1000000; i++) {
-            //cout << "publishing data for ID " << chararray_to_hex(str_id) << endl;
-            ba->publish_data(ev.id, DOMAIN_LOCAL, NULL, payload, payload_size);
+            //cout << "publishing data for ID " << chararray_to_hex(ev.id) << endl;
+            
+            ba->publish_data(ev.id, NODE_LOCAL, NULL, payload, payload_size);
+            //ba->publish_data(ev.id, DOMAIN_LOCAL, NULL, payload, payload_size);
             //ba->publish_data(ev.id, LINK_LOCAL, NULL, payload, payload_size);
-            test++;
-            if (test % 700 == 0) {
-                usleep(100);
-            }
         }
         for (int i = 0; i < 100; i++) {
-            ba->publish_data(ev.id, DOMAIN_LOCAL, NULL, payload, payload_size);
+            //cout << "publishing end flag for ID " << chararray_to_hex(ev.id) << endl;
+            ba->publish_data(ev.id, NODE_LOCAL, NULL, end_payload, payload_size);
+            //ba->publish_data(ev.id, DOMAIN_LOCAL, NULL, end_payload, payload_size);
             //ba->publish_data(ev.id, LINK_LOCAL, NULL, end_payload, payload_size);
         }
     }
@@ -134,7 +133,8 @@ int main(int argc, char* argv[]) {
     string bin_id = hex_to_chararray(id);
     string bin_prefix_id = hex_to_chararray(prefix_id);
     
-    ba->publish_scope(bin_id, prefix_id, DOMAIN_LOCAL, NULL);
+    ba->publish_scope(bin_id, prefix_id, NODE_LOCAL, NULL);
+    //ba->publish_scope(bin_id, prefix_id, DOMAIN_LOCAL, NULL);
     //ba->publish_scope(bin_id, prefix_id, LINK_LOCAL, (char *) bin_LID._data);
     
     id = "1111111111111111";
@@ -142,7 +142,8 @@ int main(int argc, char* argv[]) {
     bin_id = hex_to_chararray(id);
     bin_prefix_id = hex_to_chararray(prefix_id);
     
-    ba->publish_info(bin_id, bin_prefix_id, DOMAIN_LOCAL, NULL);
+    ba->publish_info(bin_id, bin_prefix_id, NODE_LOCAL, NULL);
+    //ba->publish_info(bin_id, bin_prefix_id, DOMAIN_LOCAL, NULL);
     //ba->publish_info(bin_id, bin_prefix_id, LINK_LOCAL, (char *) bin_LID._data);
     
     sleep(2);

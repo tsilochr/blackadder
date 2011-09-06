@@ -16,8 +16,9 @@
 #define CLICK_INFORMATIONITEM_HH
 
 #include "common.hh"
+#include "scope.hh"
 
-CLICK_DECLS
+#include <click/straccum.hh>
 
 class RemoteHost;
 class Scope;
@@ -46,6 +47,5 @@ public:
     unsigned char strategy;
 };
 
-CLICK_ENDDECLS
 #endif
 

@@ -15,11 +15,9 @@
 #ifndef CLICK_BA_BITVECTOR_HH
 #define CLICK_BA_BITVECTOR_HH
 
+
 #include <click/config.h>
-#include <click/confparse.hh>
-#include <click/error.hh>
 #include <click/element.hh>
-#include <click/glue.hh>
 #include <click/string.hh>
 
 CLICK_DECLS

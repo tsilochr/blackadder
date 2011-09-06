@@ -16,6 +16,7 @@
 #define CLICK_ACTIVEPUB_HH
 
 #include "common.hh"
+#include <click/vector.hh>
 
 CLICK_DECLS
 

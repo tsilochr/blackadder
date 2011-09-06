@@ -40,9 +40,6 @@ struct timeval end_tv;
 struct timeval duration;
 
 int payload_size = 1200;
-char *payload = (char *) malloc(payload_size);
-char *end_payload = (char *) malloc(payload_size);
-
 bool experiment_started = false;
 
 using namespace std;
@@ -84,7 +81,7 @@ void *event_listener_loop(void *arg) {
     while (true) {
         Event ev = ba->getEvent();
         if (ev.type == PUBLISHED_DATA) {
-            //cout<<"received data of size: "<< (total_buf_size - (sizeof (struct nlmsghdr) + sizeof (unsigned char) + sizeof (unsigned char) + ((int) id_len) * PURSUIT_ID_LEN)) << endl;
+            //cout<<"received data of size: "<< ev.data_len << endl;
             if (ev.data[0] == 'A') {
                 if (experiment_started == false) {
                     experiment_started = true;
@@ -126,8 +123,6 @@ void *event_listener_loop(void *arg) {
 void sigfun(int sig) {
     (void) signal(SIGINT, SIG_DFL);
     ba->disconnect();
-    free(payload);
-    free(end_payload);
     exit(0);
 }
 
@@ -159,13 +154,12 @@ int main(int argc, char* argv[]) {
 
     pthread_create(&event_listener, NULL, event_listener_loop, (void *) ba);
 
-    ba->subscribe_scope(bin_id, prefix_id, DOMAIN_LOCAL, NULL);
+    ba->subscribe_scope(bin_id, prefix_id, NODE_LOCAL, NULL);
+    //ba->subscribe_scope(bin_id, prefix_id, DOMAIN_LOCAL, NULL);
     //ba->subscribe_scope(bin_id, prefix_id, LINK_LOCAL, (char *) bin_LID._data);
 
     pthread_join(event_listener, NULL);
     sleep(1);
     ba->disconnect();
-    free(payload);
-    free(end_payload);
     return 0;
 }

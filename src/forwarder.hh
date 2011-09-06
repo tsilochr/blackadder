@@ -15,7 +15,10 @@
 #ifndef CLICK_FORWARDER_HH
 #define CLICK_FORWARDER_HH
 
-#include "common.hh"
+#include "globalconf.hh"
+
+#include <click/etheraddress.hh>
+#include <clicknet/udp.h>
 
 CLICK_DECLS
 

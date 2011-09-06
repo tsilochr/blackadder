@@ -13,8 +13,6 @@
 */
 
 #include "informationitem.hh"
-#include "scope.hh"
-#include "helper.hh"
 
 CLICK_DECLS
 
