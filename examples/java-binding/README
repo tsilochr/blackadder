@@ -1,0 +1,11 @@
+The blackadder java binding was tested with Java 6. It has been built using the openjdk JVM. Unifortunately, tests with other JVM implementations (e.g., sun's jvm) failed due to compatibility issues!
+
+First, make sure that you build the c code in the jni folder. There is a README file there for instructions.
+
+Thi directory is an Eclipse project folder, so you can directly import it to the Eclipse IDE. If you prefer to compile it manually, there is an ant script file available. Make sure that ant is installed. In case ant is missing, just run
+
+sudo apt-get install ant
+
+To compile the java code, run ant.
+
+For examples using the java binding with blackadder, see example code in src/eu/pursuit/test.
