@@ -20,8 +20,8 @@ public class Chat {
 
     public static void main(String[] args) throws DecoderException, InterruptedException {
         String objectFile = "/home/summer/blackadder-java-netbeans/jni/eu_pursuit_client_BlackadderWrapper.o";
-        BlackadderWrapper.configure(objectFile);
-        BlackAdderClient blackadder = new BlackAdderClient();
+        BlackadderWrapper.configureObjectFile(objectFile);
+        BlackAdderClient blackadder = BlackAdderClient.getInstance();
         Strategy DOMAIN_LOC = Strategy.DOMAIN_LOCAL;
 
         /*IDs*/
@@ -83,6 +83,8 @@ public class Chat {
             System.out.print("says]: ");
             String text = StringUtils.newStringUsAscii(event.getDataCopy());
             System.out.println(text);
+            
+            /*don't forget to free the event buffer*/
             event.freeNativeBuffer();
         }
     }

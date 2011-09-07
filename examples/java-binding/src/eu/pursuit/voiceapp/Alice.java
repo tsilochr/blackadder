@@ -23,8 +23,8 @@ public class Alice {
 
 	public static void main(String[] args) {
 		readOptions(args);
-		BlackadderWrapper.configure(objectFilePath);
-		BlackAdderClient blackadder = new BlackAdderClient();
+		BlackadderWrapper.configureObjectFile(objectFilePath);
+		BlackAdderClient blackadder = BlackAdderClient.getInstance();
 		
 		System.out.print("Enter callee name: ");
 		Scanner scaner = new Scanner(System.in);
@@ -85,7 +85,7 @@ public class Alice {
 		
 		String option = args[0];
 		if(!option.equals("-l")){
-			System.out.printf("Invalid option: $s Exiting");
+			System.out.printf("Invalid option: %s Exiting\n", option);
                         System.out.println();
 			System.exit(1);
 		}

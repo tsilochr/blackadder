@@ -7,20 +7,31 @@ import eu.pursuit.core.Event.EventType;
 
 public class BlackadderWrapper {	
 	
+	private static boolean USERSPACE = true;
 	private final long baPtr;	
 	private boolean closed = false;
 	
 	private static boolean configured = false;
-	public static void configure(String path_to_so){
+	private static BlackadderWrapper instance = null;
+	
+	public static void configureObjectFile(String path_to_so){
 		System.load(path_to_so);
 		configured = true;
 	}
 	
-	public BlackadderWrapper(){
-		this(true);
-	}	
+	public static void setUserSpace(boolean userspace){
+		USERSPACE = userspace;
+	}
 	
-	public BlackadderWrapper(boolean userspace){
+	public static BlackadderWrapper getWrapper() {
+		if(instance == null){
+			instance  = new BlackadderWrapper(USERSPACE);			
+		}
+		
+		return instance;
+	}
+	
+	private BlackadderWrapper(boolean userspace){
 		if(!configured){
 			throw new IllegalStateException("Shared library not set. Call static method BlackadderWrapper.configure() first");
 		}
@@ -126,6 +137,5 @@ public class BlackadderWrapper {
 	//private native void c_nextEvent(long baPtr, EventInternal e);
 	private native long c_nextEvent_direct(long baPtr, EventInternal e);
 	
-	private native void c_delete_event(long baPtr, long event_ptr);
-	
+	private native void c_delete_event(long baPtr, long event_ptr);		
 }

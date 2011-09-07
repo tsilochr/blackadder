@@ -13,9 +13,9 @@ public class Subcriber {
 	public static void main(String[] args) {
 		
 		String sharedObjPath = "/home/summer/blackadder-java-netbeans/jni/eu_pursuit_client_BlackadderWrapper.o";
-		BlackadderWrapper.configure(sharedObjPath);
+		BlackadderWrapper.configureObjectFile(sharedObjPath);
 		
-		BlackAdderClient client = new BlackAdderClient();
+		BlackAdderClient client = BlackAdderClient.getInstance();
 		ScopeID rootScope = new ScopeID();
 		rootScope.addSegment(new ByteIdentifier((byte)0, 8));
 		

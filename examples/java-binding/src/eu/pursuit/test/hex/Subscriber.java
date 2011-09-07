@@ -13,8 +13,8 @@ import eu.pursuit.core.Strategy;
 
 public class Subscriber {
 	public static void main(String[] args) throws DecoderException {
-		String sharedObjPath = "/media/WD Passport/source_code/blackadder/v0.2beta/java-binding/jni/eu_pursuit_client_BlackadderWrapper.o";
-		BlackadderWrapper.configure(sharedObjPath);
+		String sharedObjPath = "/home/tsilochr/Documents/tools/blackadder-git-fork/examples/java-binding/jni/eu_pursuit_client_BlackadderWrapper.o";
+		BlackadderWrapper.configureObjectFile(sharedObjPath);
 
 		Strategy strategy = Strategy.NODE;
 
@@ -30,8 +30,7 @@ public class Subscriber {
 		ByteIdentifier rid = new ByteIdentifier(Hex.decodeHex(ridStr
 				.toCharArray()));
 
-		BlackAdderClient client = new BlackAdderClient();
-
+		BlackAdderClient client = BlackAdderClient.getInstance();
 		ScopeID rootScope = new ScopeID();
 		rootScope.addSegment(root);
 //		System.out.println("subscribe root scope");

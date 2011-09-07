@@ -11,7 +11,6 @@ import eu.pursuit.core.Publication;
 import eu.pursuit.core.ScopeID;
 import eu.pursuit.core.Strategy;
 import eu.pursuit.core.Util;
-import org.apache.commons.codec.binary.Hex;
 
 public class BlackAdderClient{	
 	
@@ -19,13 +18,18 @@ public class BlackAdderClient{
 	
 	private final BlackadderWrapper baWrapper;
 	private boolean closed;
-
-	public BlackAdderClient(){
-		this(true);
-	}
+	private static BlackAdderClient instance = null;
 	
-	public BlackAdderClient(boolean userspace){			
-		baWrapper = new BlackadderWrapper(userspace);
+	public static BlackAdderClient getInstance(){
+		if(instance == null){
+			instance = new BlackAdderClient();
+		}
+		
+		return instance;
+	}	
+
+	private BlackAdderClient(){			
+		baWrapper = BlackadderWrapper.getWrapper();
 		closed = false;
 	}
 	

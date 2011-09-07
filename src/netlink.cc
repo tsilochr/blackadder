@@ -13,6 +13,7 @@
 */
 
 #include "netlink.hh"
+#include <unistd.h>
 
 CLICK_DECLS
 

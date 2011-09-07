@@ -33,10 +33,10 @@ public class Event {
 		}
 	}
 	
-	private final EventType type;
-	private final byte [] id; 
-	private final ByteBuffer data;
-	private final int dataLength;
+	private EventType type;
+	private byte [] id; 
+	private ByteBuffer data;
+	private int dataLength;
 	
 	/*memory mappings to native code*/
 	BlackadderWrapper bawrapper = null;
@@ -60,22 +60,41 @@ public class Event {
 	}
 
 	public byte [] getId(){
+		if(freed){
+			throw new IllegalStateException("this event has been freed");
+		}
+		
 		return id;
 	}
 	
 	public int getDataLength(){
+		if(freed){
+			throw new IllegalStateException("this event has been freed");
+		}
+		
 		return dataLength;
 	}
 	
 	public byte [] getDataCopy(){
+		if(freed){
+			throw new IllegalStateException("this event has been freed");
+		}
+		
 		return getData(0, this.dataLength);
 	}
 	
 	public byte getByte(int pos){
+		if(freed){
+			throw new IllegalStateException("this event has been freed");
+		}
 		return data.get(pos);
 	}
 	
 	public void writeTo(ByteBuffer buff){
+		if(freed){
+			throw new IllegalStateException("this event has been freed");
+		}
+		
 		buff.put(data);
 		data.position(0);
 	}
@@ -109,21 +128,29 @@ public class Event {
 		if(mappedToNativeBuffer){
 			bawrapper.deleteEvent(event_ptr);
 			freed  = true;
+			
+			id = new byte[0]; 
+			data = null;
+			dataLength = 0;
 		}		
 	}
 
-	@Override
-	protected void finalize() throws Throwable {
-		freeNativeBuffer();
-		super.finalize();
-	}
-
 	public byte[] getData(int offset, int length) {
+		if(freed){
+			throw new IllegalStateException("this event has been freed");
+		}
+		
 		byte [] retval = new byte[length];
 		this.data.position(offset);
 		this.data.get(retval);
 		this.data.position(0);
 		return retval;
 	}	
+	
+	@Override
+	protected void finalize() throws Throwable {
+		freeNativeBuffer();
+		super.finalize();
+	}
 
 }

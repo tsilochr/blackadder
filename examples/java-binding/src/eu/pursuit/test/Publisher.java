@@ -18,9 +18,9 @@ public class Publisher {
 		
 		String sharedObjPath = "/home/summer/blackadder-java-netbeans/jni/eu_pursuit_client_BlackadderWrapper.o";
 		
-		BlackadderWrapper.configure(sharedObjPath);
+		BlackadderWrapper.configureObjectFile(sharedObjPath);
 		
-		BlackAdderClient client = new BlackAdderClient();
+		BlackAdderClient client = BlackAdderClient.getInstance();
 		ScopeID rootScope = new ScopeID();
 		ByteIdentifier rootScopeId = new ByteIdentifier((byte)0, 8); 
 		rootScope.addSegment(rootScopeId);

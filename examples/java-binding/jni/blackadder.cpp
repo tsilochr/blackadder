@@ -3,19 +3,8 @@
 
 using namespace std;
 
-int Blackadder::counter = getpid()*1000;
-list<int> Blackadder::pool = list<int>();
-
 int Blackadder::nextRegNum(){
-  int val = 0;
-  if(pool.size() == 0){
-	val = ++counter;
-  } else{
-    val = pool.front();
-    pool.pop_front();    
-  }
-  
-  return val;
+ return getpid();
 }
 
 Blackadder::Blackadder(bool userspaceIn) {
@@ -63,7 +52,6 @@ Blackadder::~Blackadder() {
     if(userspace && !disconnected){
        disconnect(); 
     }
-    pool.push_back(regNum);
     if (sock_fd != -1) {
         cout << "Closed netlink socket" << endl;
         close(sock_fd);

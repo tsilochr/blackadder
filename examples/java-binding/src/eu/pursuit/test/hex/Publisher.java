@@ -17,8 +17,8 @@ import eu.pursuit.core.Strategy;
 
 public class Publisher {
 	public static void main(String[] args) throws DecoderException {
-		String sharedObjPath = "/media/WD Passport/source_code/blackadder/v0.2beta/java-binding/jni/eu_pursuit_client_BlackadderWrapper.o";		
-		BlackadderWrapper.configure(sharedObjPath);
+		String sharedObjPath = "/home/tsilochr/Documents/tools/blackadder-git-fork/examples/java-binding/jni/eu_pursuit_client_BlackadderWrapper.o";		
+		BlackadderWrapper.configureObjectFile(sharedObjPath);
 		
 		Strategy strategy = Strategy.NODE;
 		
@@ -31,7 +31,7 @@ public class Publisher {
 		String ridStr = "00013000f000000a";
 		ByteIdentifier rid = new ByteIdentifier(Hex.decodeHex(ridStr.toCharArray()));
 		
-		BlackAdderClient client = new BlackAdderClient();
+		BlackAdderClient client = BlackAdderClient.getInstance();
 		
 		
 		ScopeID scope = new ScopeID();
@@ -62,6 +62,7 @@ public class Publisher {
 				System.out.println("publishing data");
 				client.publishData(event.getId(), data, strategy, null);
 			}
+			event.freeNativeBuffer();
 		}
 	
 	}

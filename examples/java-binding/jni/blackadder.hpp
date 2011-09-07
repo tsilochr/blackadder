@@ -6,7 +6,6 @@
 #include <sys/socket.h>
 #include <linux/netlink.h>
 #include <vector>
-#include <list>
 #include <sstream> 
 #include <iostream>
 
@@ -70,8 +69,6 @@ public:
     int regNum;
     bool userspace;
     bool disconnected;
-    static int counter;
-    static list<int> pool;
 };
 
 class Event {

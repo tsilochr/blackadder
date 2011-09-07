@@ -6,9 +6,9 @@ import eu.pursuit.client.BlackadderWrapper;
 public class InterruptEvent {
 	public static void main(String[] args) {
 		String sharedObjPath = "/media/WD Passport/source_code/blackadder/v0.2beta/java-binding/jni/eu_pursuit_client_BlackadderWrapper.o";
-		BlackadderWrapper.configure(sharedObjPath);
+		BlackadderWrapper.configureObjectFile(sharedObjPath);
 
-		BlackAdderClient client = new BlackAdderClient();
+		BlackAdderClient client = BlackAdderClient.getInstance();
 
 		ReaderThread t = new ReaderThread(client);
 		t.start();
@@ -16,7 +16,6 @@ public class InterruptEvent {
 			System.out.println("sleeping");
 			Thread.sleep(2000);
 		} catch (InterruptedException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 		
@@ -52,7 +51,6 @@ public class InterruptEvent {
 				e.printStackTrace();
 			}
 		}
-
 	}
 
 }

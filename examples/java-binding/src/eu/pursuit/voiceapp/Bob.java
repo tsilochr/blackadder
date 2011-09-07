@@ -24,8 +24,8 @@ public class Bob {
 
 	public static void main(String[] args) {
 		readOptions(args);
-		BlackadderWrapper.configure(objectFilePath);
-		BlackAdderClient blackadder = new BlackAdderClient();
+		BlackadderWrapper.configureObjectFile(objectFilePath);
+		BlackAdderClient blackadder = BlackAdderClient.getInstance();
 		System.out.print("Enter my name: ");
 		Scanner scaner = new Scanner(System.in);
 		String myNameStr = scaner.nextLine().trim();
@@ -94,7 +94,7 @@ public class Bob {
 		
 		String option = args[0];
 		if(!option.equals("-l")){
-			System.out.printf("Invalid option: $s Exiting");
+			System.out.printf("Invalid option: %s Exiting\n", option);
                         System.out.println();
 			System.exit(1);
 		}

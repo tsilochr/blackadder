@@ -1,5 +1,5 @@
 CC = g++
-JVI_INCL= -I/usr/lib/jvm/java-1.6.0-openjdk/include
+JVI_INCL= -I/usr/lib/jvm/java-6-openjdk/include/
 
 all: BlackadderWrapper.o BlackadderWrapper.so
 
