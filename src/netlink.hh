@@ -16,6 +16,9 @@
 #define CLICK_NETLINK_HH
 
 #include <click/config.h>
+#include <click/element.hh>
+#include <click/confparse.hh>
+#include <click/error.hh>
 #include <click/task.hh>
 
 #if CLICK_LINUXMODULE
